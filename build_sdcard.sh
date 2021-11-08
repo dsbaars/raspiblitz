@@ -209,9 +209,9 @@ echo "torSourceListAvailable=${torSourceListAvailable}"
 if [ ${torSourceListAvailable} -eq 0 ]; then
   echo "- adding TOR sources ..."
   if [ "${baseimage}" = "raspbian" ] || [ "${baseimage}" = "raspios_arm64" ] || [ "${baseimage}" = "armbian" ] || [ "${baseimage}" = "dietpi" ]; then
-    echo "- using https://deb.torproject.org/torproject.org buster"
-    echo "deb https://deb.torproject.org/torproject.org buster main" | sudo tee -a /etc/apt/sources.list
-    echo "deb-src https://deb.torproject.org/torproject.org buster main" | sudo tee -a /etc/apt/sources.list
+    echo "- using https://deb.torproject.org/torproject.org bullseye"
+    echo "deb https://deb.torproject.org/torproject.org bullseye main" | sudo tee -a /etc/apt/sources.list
+    echo "deb-src https://deb.torproject.org/torproject.org bullseye main" | sudo tee -a /etc/apt/sources.list
   elif [ "${baseimage}" = "ubuntu" ]; then
     echo "- using https://deb.torproject.org/torproject.org focal"
     echo "deb https://deb.torproject.org/torproject.org focal main" | sudo tee -a /etc/apt/sources.list
@@ -274,11 +274,11 @@ if [ -f "/usr/bin/python3.7" ]; then
   # make sure /usr/bin/python exists (and calls Python3.7 in Buster)
   sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.7 1
   echo "python calls python3.7"
-elif [ -f "/usr/bin/python3.8" ]; then
+elif [ -f "/usr/bin/python3.9" ]; then
   # use python 3.8 if available
-  sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.8 1
-  sudo ln -s /usr/bin/python3.8 /usr/bin/python3.7
-  echo "python calls python3.8"
+  sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.9 1
+  sudo ln -s /usr/bin/python3.9 /usr/bin/python3.7
+  echo "python calls python3.9"
 else
   echo "!!! FAIL !!!"
   echo "There is no tested version of python present"
